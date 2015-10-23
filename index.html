@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	<title>Data Modeling</title>
+	<!-- css -->
+	<link rel="stylesheet" href="css/default/style.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<!-- javascript -->
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="js/jstree.min.js"></script>
+	<script src="js/requirements.js"></script>
+
+	<script src="js/main.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+	<div>
+
+		<label style="font-size:20px;font-weight: bold">Requirements Document Data Modeling</label>
+
+	</div>
+	<br/>
+	<div>
+		<p>Dear Annotator ,</p>
+
+		<p> Please set your name here <input type="text" ng-model="data.annotator" ng-change="setAnnotatorName()" style="margin-left: 10px"/></p>
+		<p>	Select an episode from the drop down below, model it (classes, methods, properties and etc.)</p>
+		<p> When you are done, please send it to me.</p>
+		<p> Currently we support 3 options
+			<ul>
+				<li>If this an online version just set up your name and click save - <button ng-click="sendMailViaServer()">save</button></li>
+
+				<li>If you have an email client - <button ng-click="sendMail()">send model by mail</button></li>
+
+				<li>
+					Otherwise, copy the json to a clipboard and mail it to me <button ng-click="copyToClipboard(JSON.stringify(getModel()))">copy to clipboard</button>
+
+					<b>eli.pog@gmail.com</b>
+				</li>
+			</ul>
+		</p>
+		<p>Thanks :) </p>
+
+		<p>
+			<a href="https://docs.google.com/document/d/1_90XjtDwToqPEVx_TfkJFlNakeg2oDGlvyuhKQZ_mfM/edit" target="_blank">(Google Doc with all episodes)</a>
+		</p>
+	</div>
+	<div id="content">
+		<div id="episode" style="float: left; width: 49%">
+			<label>Please Select an episode : </label>
+			<select ng-model="data.selectedRequirement" ng-change="changeEpisode()">
+				<option ng-selected="key==data.selectedRequirement" ng-repeat="(key,value) in data.requirements" value="{{key}}">{{key}}</option>
+			</select>
+
+			<button ng-click="reset()" style="margin-left:10px">reset</button>
+
+			<br/>
+			<!--<textarea class="requirements" >-->
+				<ol class="requirements">
+					<li class="animate-repeat" ng-repeat="requirement in data.requirements[data.selectedRequirement]" >
+						{{requirement}}
+					</li>
+					<li class="animate-repeat" ng-if="data.requirements[data.selectedRequirement].length == 0">
+						<strong>No episode is selected...</strong>
+					</li>
+				</ol>
+			<!--</textarea>-->
+		</div>
+		<div>
+			<label>Model the selected episode </label>
+			<div id="tree" class="demo"></div>
+		</div>
+
+	</div>
+</body>
+</html>

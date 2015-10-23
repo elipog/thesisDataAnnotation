@@ -1,0 +1,19 @@
+html { margin:0; padding:0; font-size:62.5%; }
+body { max-width:90%; min-width:300px; margin:0 auto; padding:20px 10px; font-size:14px; font-size:1.4em; }
+h1 { font-size:1.8em; }
+.demo {
+    overflow:auto;
+    border:1px solid silver;
+    min-height:100px;
+    width: 49%;
+    margin-top: 17px
+}
+.requirements{
+    border:1px solid silver;
+    resize: none;
+    width: 90%;
+    height:500px;
+}
+.animate-repeat{
+    margin-top: 10px;
+}
