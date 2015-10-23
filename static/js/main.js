@@ -258,11 +258,21 @@ app.controller('myCtrl', function($scope) {
             alert("please enter your name and try again");
             return;
         }
+        if(!$scope.data.selectedRequirement || $scope.data.selectedRequirement == null || $scope.data.selectedRequirement.length == 0){
+            alert("please select on of the episodes");
+            return;
+        }
+        var model = $scope.getModel();
+        if(model.children.length == 0){
+            alert("please make sure that the model is not trivial (at least contains one created class");
+            return;
+        }
         $scope.loading();
+
         $.get("/send",{
             to:'eli.pog@gmail.com',
             subject: 'Data modeling for episode: ' + $scope.data.selectedRequirement + ' ,From: '+ $scope.data.annotator,
-            text:JSON.stringify( $scope.getModel())
+            text:JSON.stringify(model)
         },function(data){
             if( data=="sent" ) {
                 alert("Email has been sent to eli.pog@gmail.com . Thanks :)");
