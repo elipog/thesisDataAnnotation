@@ -258,6 +258,7 @@ app.controller('myCtrl', function($scope) {
             alert("please enter your name and try again");
             return;
         }
+        $scope.loading();
         $.get("/send",{
             to:'eli.pog@gmail.com',
             subject: 'Data modeling for episode: ' + $scope.data.selectedRequirement + ' ,From: '+ $scope.data.annotator,
@@ -265,11 +266,21 @@ app.controller('myCtrl', function($scope) {
         },function(data){
             if( data=="sent" ) {
                 alert("Email has been sent to eli.pog@gmail.com . Thanks :)");
+            }else{
+                alert("Error :( , try to send your annotation by mail with the 2 other options");
             }
-
+            $('#overlay').remove();
         });
     }
 
+
+    $scope.loading = function() {
+        // add the overlay with loading image to the page
+        var over = '<div id="overlay">' +
+            '<img id="loading" src="http://bit.ly/pMtW1K">' +
+            '</div>';
+        $(over).appendTo('body');
+    }
 
 
 

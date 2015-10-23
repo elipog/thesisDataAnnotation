@@ -17,3 +17,31 @@ h1 { font-size:1.8em; }
 .animate-repeat{
     margin-top: 10px;
 }
+
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+#overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+#loading {
+    width: 50px;
+    height: 57px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
