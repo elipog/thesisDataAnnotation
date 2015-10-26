@@ -9,7 +9,8 @@ app.controller('myCtrl', function($scope) {
     }
 
 
-    $scope.copyToClipboard = function(text) {
+    $scope.copyToClipboard = function() {
+        var text = JSON.stringify($scope.getModel());
         window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
     }
 

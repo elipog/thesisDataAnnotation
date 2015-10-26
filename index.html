@@ -27,25 +27,25 @@
 	<div>
 		<p>Dear Annotator ,</p>
 
-		<p> Please set your name here <input type="text" ng-model="data.annotator" ng-change="setAnnotatorName()" style="margin-left: 10px"/></p>
-		<p>	Select an episode from the drop-down menu below, model it (classes, methods, properties and etc.)</p>
-		<p> When you are done, please send it to me. We are urrently we support 3 options:
+		<p> Your name: <input type="text" ng-model="data.annotator" ng-change="setAnnotatorName()" style="margin-left: 10px"/></p>
+		<p>	Plese select an episode from the drop-down menu below and  model it (classes, methods, properties, etc.)</p>
+		<p> When you are done with a single episode, please send the model to me. We currently support 3 options:
 			<ul>
-				<li>If this an online version just set up your name and click save - <button ng-click="sendMailViaServer()">save</button></li>
+				<li>If this an online version, just set up your name in the above box and click save - <button ng-click="sendMailViaServer()">save</button></li>
 
-				<li>If you have an email client - <button ng-click="sendMail()">send model by mail</button></li>
+				<li>If you have an email client, you can simply - <button ng-click="sendMail()">send model by mail</button></li>
 
 				<li>
-					Otherwise, copy the json to a clipboard <button ng-click="copyToClipboard(JSON.stringify(getModel()))">copy to clipboard</button> and mail it to me
+					Otherwise, copy the json to a clipboard using <button ng-click="copyToClipboard()">copy to clipboard</button> and mail it to me
 
 					<b>eli.pog@gmail.com</b>
 				</li>
 			</ul>
 		</p>
 		<p>
-			Node: for a simple example <a href="/example.html" target="_blank">click here</a> , for further instructions plase contact me :)
+			Note: for a simple example <a href="/example.html" target="_blank">click here</a> , for further instructions please contact me :)
 		</p>
-		<p>Thanks :) </p>
+		<p>Thanks a lot for your help, we very much appreciate it :) </p>
 
 		<p>
 			<a href="https://docs.google.com/document/d/1_90XjtDwToqPEVx_TfkJFlNakeg2oDGlvyuhKQZ_mfM/edit" target="_blank">(Google Doc with all episodes)</a>
