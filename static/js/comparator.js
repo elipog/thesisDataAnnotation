@@ -5,9 +5,7 @@ app.controller('myCtrl', function($scope) {
     $scope.data = {
         selectedRequirement:  localStorage.getItem('selectedEpisode'),
         requirements: requirements,
-        annotator: localStorage.getItem('annotator'),
-        annotatorExperience: localStorage.getItem('annotatorExperience'),
-        annotatorTitle:localStorage.getItem('annotatorTitle')
+        annotator: localStorage.getItem('annotator')
     }
 
 
@@ -51,9 +49,7 @@ app.controller('myCtrl', function($scope) {
 
     $scope.sendMail = function() {
            var model = encodeURI(JSON.stringify( $scope.getModel()));
-       var subject =  'Data modeling for episode: ' + $scope.data.selectedRequirement + ' ,From: '+ $scope.data.annotator + " ," + $scope.data.annotatorTitle + " ," + $scope.data.annotatorExperience;
-
-        var win = window.open('mailto:eli.pog@gmail.com?subject='+subject + '&body=' + model);
+        var win = window.open('mailto:eli.pog@gmail.com?subject=Data modeling for episode ' + $scope.data.selectedRequirement + '&body=' + model);
         setTimeout(function () {
             win.close();
         }, 100);
@@ -68,8 +64,6 @@ app.controller('myCtrl', function($scope) {
         localStorage.setItem('jstreejson', JSON.stringify( $scope.cleanTemplate()));
         localStorage.setItem('selectedEpisode', "");
         localStorage.setItem('annotator', "");
-        localStorage.setItem('annotatorExperience',"");
-        localStorage.setItem('annotatorTitle',"");
         location.reload(true);
 
     }
@@ -258,8 +252,6 @@ app.controller('myCtrl', function($scope) {
 
     $scope.setAnnotatorName = function(){
         localStorage.setItem('annotator',$scope.data.annotator);
-        localStorage.setItem('annotatorExperience',$scope.data.annotatorExperience);
-        localStorage.setItem('annotatorTitle',$scope.data.annotatorTitle);
     }
 
     $scope.sendMailViaServer = function(){
@@ -280,8 +272,8 @@ app.controller('myCtrl', function($scope) {
 
         $.get("/send",{
             to:'eli.pog@gmail.com',
-            subject: 'Data modeling for episode: ' + $scope.data.selectedRequirement + ' ,From: '+ $scope.data.annotator + " ," + $scope.data.annotatorTitle + " ," + $scope.data.annotatorExperience,
-            text: JSON.stringify(model)
+            subject: 'Data modeling for episode: ' + $scope.data.selectedRequirement + ' ,From: '+ $scope.data.annotator,
+            text:JSON.stringify(model)
         },function(data){
             if( data=="sent" ) {
                 alert("Email has been sent to eli.pog@gmail.com . Thanks :)");

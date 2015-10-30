@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Data Modeling - Comparator</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <title>Data Modeling</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/default/style.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- javascript -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>-->
+    <script src="js/jstree.min.js"></script>
+    <!--<script src="js/comparator.js"></script>-->
+    <script>
+        function readBlob(id,treeId) {
+
+            var files = document.getElementById(id).files;
+            if (!files.length) {
+                alert('Please select a file!');
+                return;
+            }
+
+            var file = files[0];
+            var start =  0;
+            var stop =  file.size - 1;
+
+            var reader = new FileReader();
+
+            // If we use onloadend, we need to check the readyState.
+            reader.onloadend = function(evt) {
+                if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+                    updateData(treeId, evt.target.result);
+
+                }
+            };
+
+            var blob = file.slice(start, stop + 1);
+            reader.readAsBinaryString(blob);
+        }
+
+
+        function updateData(id,data) {
+
+            $('#'+id).jstree().destroy();
+
+            $('#'+id).jstree({
+                "plugins": [
+                    "dnd", "search",
+                    "state", "types", "wholerow", "html_data", "themes", "ui", "dnd", "crrm"
+                ],
+                "types": {
+                    "classes": {},
+                    "properties": {},
+                    "methods": {},
+                    "returnType": {},
+                    "extendsClass": {},
+                    "arguments": {},
+                    "type": {},
+                    "leave": {}
+                },
+                'core' : {
+                    'data' :  [JSON.parse(data)]
+                }
+            });
+
+            $('#'+id).jstree().redraw(true);
+        }
+
+
+        function initTree(id) {
+            $("#"+id).jstree({
+                "plugins": [
+                    "dnd", "search",
+                    "state", "types", "wholerow", "html_data", "themes", "ui", "dnd", "crrm"
+                ],
+                "types": {
+                    "classes": {},
+                    "properties": {},
+                    "methods": {},
+                    "returnType": {},
+                    "extendsClass": {},
+                    "arguments": {},
+                    "type": {},
+                    "leave": {}
+                },
+                'core': {
+                    "animation": 0,
+                    "check_callback": true,
+                    "themes": {"stripes": true},
+                    'data': []
+                }
+            });
+        }
+
+
+        initTree("tree1");
+        initTree("tree2");
+    </script>
+
+    <style>
+        #byte_content {
+            margin: 5px 0;
+            max-height: 100px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        #byte_range { margin-top: 5px; }
+        .demo{
+            width: 95% !important;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div style="width: 50%;float: left;">
+    <input type="file" id="files1" name="file"/>
+    <button onclick="readBlob('files1','tree1')">load</button>
+    <div id="tree1" class="demo"></div>
+</div>
+<div style="width: 50%;float:left">
+    <input type="file" id="files2" name="file" />
+    <button onclick="readBlob('files2','tree2')">load</button>
+    <div id="tree2" class="demo"></div>
+</div>
+
+</body>
+</html>

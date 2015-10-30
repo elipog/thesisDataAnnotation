@@ -27,7 +27,14 @@
 	<div>
 		<p>Dear Annotator ,</p>
 
-		<p> Your name: <input type="text" ng-model="data.annotator" ng-change="setAnnotatorName()" style="margin-left: 10px"/></p>
+		<p>
+			Your name: <input type="text" ng-model="data.annotator" ng-change="setAnnotatorName()" style="margin-left: 10px;margin-right: 10px"/>
+			Title: <input type="text" ng-model="data.annotatorTitle" ng-change="setAnnotatorName()" style="margin-left: 10px;margin-right: 10px"/>
+			Years of Experience: <input type="text" ng-model="data.annotatorExperience" ng-change="setAnnotatorName()" style="margin-left: 10px;margin-right: 10px"/>
+		</p>
+
+
+
 		<p>	Please select an episode from the drop-down menu below and  model it (classes, methods, properties, etc.)</p>
 		<p> When you are done with a single episode, please send the model to me. We currently support 3 options:
 			<ul>
