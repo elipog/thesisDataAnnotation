@@ -67,9 +67,6 @@ app.controller('myCtrl', function($scope) {
 
         localStorage.setItem('jstreejson', JSON.stringify( $scope.cleanTemplate()));
         localStorage.setItem('selectedEpisode', "");
-        localStorage.setItem('annotator', "");
-        localStorage.setItem('annotatorExperience',"");
-        localStorage.setItem('annotatorTitle',"");
         location.reload(true);
 
     }
