@@ -14,13 +14,13 @@ var requirements = {
         "Any user must be able to search by tag the public bookmarks of all RESTMARKS users .",
         "A logged in user , must be able to search by tag his private bookmarks as well ."],
 
-    "Taxi": [
-        "A taxi notifies the server of its location continuously",
-        "A taxi can get its zone information from the server",
-        "A taxi can change its status",
-        "A customer can place an order for a taxi",
-        "A taxi can receive a customer order",
-        "After the taxi is selected , customer gets taxi info"],
+    //"Taxi": [
+    //    "A taxi notifies the server of its location continuously",
+    //    "A taxi can get its zone information from the server",
+    //    "A taxi can change its status",
+    //    "A customer can place an order for a taxi",
+    //    "A taxi can receive a customer order",
+    //    "After the taxi is selected , customer gets taxi info"],
 
     "Waze": [
         "Driver can send messages to report risks on the road",
@@ -55,17 +55,17 @@ var requirements = {
         "Students have the ability to write notes and could also take printouts of them .",
         "It is also possible for students that they can create cards and share them among others .",
         "Students could do some exercises and the systems should show results at the end highlighting score ."],
-    "Resturants (E14)": [
-        "Staff member can add, update or remove restaurants .",
-        "Staff member can add or update information about seat availability , menu and dishes , news about restaurant .",
-        "Administrator can add, update or remove restaurant staff members ."],
-    "Game (E20)": [
-        "The player must have a profile .",
-        "The supervisor must have an avatar .",
-        "The player must be able to communicate with the supervisor .",
-        "The user should be able to stop the communication with other players .",
-        "The user should be able to change game level .",
-        "The system should have internet access ."],
+    //"Resturants (E14)": [
+    //    "Staff member can add, update or remove restaurants .",
+    //    "Staff member can add or update information about seat availability , menu and dishes , news about restaurant .",
+    //    "Administrator can add, update or remove restaurant staff members ."],
+    //"Game (E20)": [
+    //    "The player must have a profile .",
+    //    "The supervisor must have an avatar .",
+    //    "The player must be able to communicate with the supervisor .",
+    //    "The user should be able to stop the communication with other players .",
+    //    "The user should be able to change game level .",
+    //    "The system should have internet access ."],
     "Economic (E21)": [
         "Each visitor should apply for an account .",
         "Each visitor should be able to connect to his account .",
